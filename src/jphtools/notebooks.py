@@ -4,10 +4,15 @@
 # to produce student-friendly versions of Jupyter notebooks
 import nbformat
 import re
+import argparse
 
 
-def remove_solution_blocks(input_file, output_file):
-    with open(input_file, "r") as f:
+def strip_solutions_from_notebook(input_path, output_path):
+    """
+    Removes solution blocks from a Jupyter notebook and writes the result to output_path.
+    Solution blocks are marked by '# BEGIN_SOLUTION' and '# END_SOLUTION'.
+    """
+    with open(input_path, "r") as f:
         nb = nbformat.read(f, as_version=4)
 
     for cell in nb.cells:
@@ -19,13 +24,23 @@ def remove_solution_blocks(input_file, output_file):
                 flags=re.DOTALL,
             )
 
-    with open(output_file, "w") as f:
+    with open(output_path, "w") as f:
         nbformat.write(nb, f)
 
 
-filename_pairs = [
-    ("wv-query-agent-finished.ipynb", "wv-query-agent.ipynb")
-]
+def main():
+    parser = argparse.ArgumentParser(
+        description="Strip solution blocks from a Jupyter notebook."
+    )
+    parser.add_argument(
+        "input_path", help="Path to the input notebook (with solutions)"
+    )
+    parser.add_argument(
+        "output_path", help="Path to the output notebook (student version)"
+    )
+    args = parser.parse_args()
+    strip_solutions_from_notebook(args.input_path, args.output_path)
 
-for fname_pair in filename_pairs:
-    remove_solution_blocks(*fname_pair)
+
+if __name__ == "__main__":
+    main()
