@@ -11,3 +11,7 @@ jphtools notebook strip-answers input.ipynb output.ipynb
 ```
 
 This will remove code between `# BEGIN_SOLUTION` and `# END_SOLUTION` in code cells, replacing it with `# ADD YOUR CODE HERE` in the output notebook.
+
+## TODOs
+
+- PNG compression
