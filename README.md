@@ -19,3 +19,7 @@ This will remove code between `# BEGIN_SOLUTION` and `# END_SOLUTION` in code ce
 For PNG compression, we recommend using [Crunch](https://github.com/chrissimpkins/Crunch) - an excellent tool that can achieve 30-70% size reduction while maintaining visual quality.
 
 Installation - [see this page](https://github.com/chrissimpkins/Crunch/blob/master/docs/EXECUTABLE.md)
+
+## TODOs
+
+- PDF to JPGs
