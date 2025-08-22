@@ -23,3 +23,6 @@ Installation - [see this page](https://github.com/chrissimpkins/Crunch/blob/mast
 ## TODOs
 
 - PDF to JPGs
+- Automation for Weaviate scripts
+    - Pull in Weaviate template code
+    - Generate starter Weaviate code for local/Cloud w/ Claude
