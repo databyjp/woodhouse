@@ -13,7 +13,7 @@ def code():
 @code.command()
 def weaviate():
     """Generate Weaviate code examples."""
-    examples_path = importlib.resources.files('jphtools') / 'weaviate_examples'
+    examples_path = importlib.resources.files("jphtools") / "weaviate_examples"
     example_files = sorted(list(examples_path.glob("*.py")))
 
     example_choices = [f.stem for f in example_files]

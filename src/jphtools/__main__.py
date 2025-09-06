@@ -9,10 +9,12 @@ def cli():
     """jphtools: A collection of personal tools."""
     pass
 
+
 @cli.group()
 def notebook():
     """Notebook-related tools."""
     pass
+
 
 @notebook.command("strip-answers")
 @click.argument("input_path")
