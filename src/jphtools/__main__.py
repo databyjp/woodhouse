@@ -1,6 +1,7 @@
 import click
 from jphtools.notebooks import strip_solutions_from_notebook
 from jphtools.images import crunch_images
+from jphtools.code import code
 
 
 @click.group()
@@ -27,6 +28,8 @@ def crunch(pattern):
     """Compresses PNG files using crunch and renames them."""
     crunch_images(pattern)
 
+
+cli.add_command(code)
 
 if __name__ == "__main__":
     cli()
