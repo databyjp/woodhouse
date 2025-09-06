@@ -1,6 +1,6 @@
 import click
 import questionary
-import pkg_resources
+import importlib.resources
 from pathlib import Path
 
 
@@ -13,7 +13,7 @@ def code():
 @code.command()
 def weaviate():
     """Generate Weaviate code examples."""
-    examples_path = Path(pkg_resources.resource_filename('jphtools', 'weaviate_examples'))
+    examples_path = importlib.resources.files('jphtools') / 'weaviate_examples'
     example_files = sorted(list(examples_path.glob("*.py")))
 
     example_choices = [f.stem for f in example_files]
