@@ -5,7 +5,7 @@ from pathlib import Path
 from click.testing import CliRunner
 
 import pytest
-from jphtools.__main__ import crunch
+from woodhouse.__main__ import crunch
 
 # Skip all tests in this file if crunch is not installed
 crunch_installed = shutil.which("crunch") is not None

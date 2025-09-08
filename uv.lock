@@ -1198,33 +1198,6 @@ wheels = [
 ]
 
 [[package]]
-name = "jphtools"
-version = "0.3.0a1"
-source = { editable = "." }
-dependencies = [
-    { name = "click" },
-    { name = "jupyter" },
-    { name = "pydantic-ai" },
-    { name = "questionary" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "pytest" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "click", specifier = ">=8.2.1" },
-    { name = "jupyter", specifier = ">=1.1.1" },
-    { name = "pydantic-ai", specifier = ">=0.7.4" },
-    { name = "questionary", specifier = ">=2.0.1" },
-]
-
-[package.metadata.requires-dev]
-dev = [{ name = "pytest", specifier = ">=8.4.2" }]
-
-[[package]]
 name = "json5"
 version = "0.12.0"
 source = { registry = "https://pypi.org/simple" }
@@ -3221,6 +3194,33 @@ sdist = { url = "https://files.pythonhosted.org/packages/41/53/2e0253c5efd69c965
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ca/51/5447876806d1088a0f8f71e16542bf350918128d0a69437df26047c8e46f/widgetsnbextension-4.0.14-py3-none-any.whl", hash = "sha256:4875a9eaf72fbf5079dc372a51a9f268fc38d46f767cbf85c43a36da5cb9b575", size = 2196503, upload-time = "2025-04-10T13:01:23.086Z" },
 ]
+
+[[package]]
+name = "woodhouse"
+version = "0.3.0a2"
+source = { editable = "." }
+dependencies = [
+    { name = "click" },
+    { name = "jupyter" },
+    { name = "pydantic-ai" },
+    { name = "questionary" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "pytest" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "click", specifier = ">=8.2.1" },
+    { name = "jupyter", specifier = ">=1.1.1" },
+    { name = "pydantic-ai", specifier = ">=0.7.4" },
+    { name = "questionary", specifier = ">=2.0.1" },
+]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.4.2" }]
 
 [[package]]
 name = "yarl"
