@@ -31,6 +31,32 @@ async def generate_weaviate_code_from_prompt(prompt: str) -> str:
     return result.output
 
 
+async def save_code_to_file(code_content: str, default_filename: str):
+    """Asks the user if they want to save the code and saves it if they confirm."""
+    should_save = await questionary.confirm("Do you want to save this code to a file?").ask_async()
+    if should_save:
+        filename = await questionary.text(
+            "Enter the filename:",
+            default=default_filename
+        ).ask_async()
+        if filename:
+            file_path = Path(filename)
+            write_file = True
+            if file_path.exists():
+                write_file = await questionary.confirm(
+                    f"File '{filename}' already exists. Overwrite?"
+                ).ask_async()
+
+            if write_file:
+                try:
+                    file_path.write_text(code_content)
+                    print(f"Code saved to {filename}")
+                except Exception as e:
+                    print(f"Error saving file: {e}")
+            else:
+                print("Save cancelled.")
+
+
 @click.group()
 def code():
     """Code-related tools."""
@@ -61,9 +87,12 @@ async def weaviate_async():
             generated_code = await generate_weaviate_code_from_prompt(prompt)
             print("--- Generated Code ---")
             print(generated_code)
+            await save_code_to_file(generated_code, "generated.example.py")
     elif selected_example:
         for example_file in example_files:
             if example_file.stem == selected_example:
                 print(f"--- {example_file.name} ---")
-                print(example_file.read_text())
+                content = example_file.read_text()
+                print(content)
+                await save_code_to_file(content, example_file.name)
                 break
