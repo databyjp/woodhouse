@@ -1,7 +1,10 @@
 import click
+import logging
 from woodhouse.notebooks import strip_solutions_from_notebook
 from woodhouse.images import crunch_images
 from woodhouse.code import code
+
+logging.getLogger("anthropic").setLevel(logging.WARNING)
 
 
 @click.group()
