@@ -9,7 +9,7 @@ from pydantic_ai.models.anthropic import AnthropicModel
 
 async def generate_weaviate_code_from_prompt(prompt: str) -> str:
     """Generate Weaviate code from a prompt using Pydantic AI."""
-    reference_path = importlib.resources.files("jphtools") / "references" / "weaviate.py"
+    reference_path = importlib.resources.files("woodhouse") / "references" / "weaviate.py"
     reference_code = reference_path.read_text()
 
     system_prompt = f"""You are a Weaviate code generation assistant.
@@ -44,7 +44,7 @@ def weaviate():
 
 async def weaviate_async():
     """Generate Weaviate code examples."""
-    examples_path = importlib.resources.files("jphtools") / "weaviate_examples"
+    examples_path = importlib.resources.files("woodhouse") / "weaviate_examples"
     example_files = sorted(list(examples_path.glob("*.py")))
 
     example_choices = [f.stem for f in example_files]

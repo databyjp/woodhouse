@@ -1,12 +1,12 @@
 import click
-from jphtools.notebooks import strip_solutions_from_notebook
-from jphtools.images import crunch_images
-from jphtools.code import code
+from woodhouse.notebooks import strip_solutions_from_notebook
+from woodhouse.images import crunch_images
+from woodhouse.code import code
 
 
 @click.group()
 def cli():
-    """jphtools: A collection of personal tools."""
+    """woodhouse: A collection of personal tools."""
     pass
 
 

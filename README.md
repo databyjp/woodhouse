@@ -1,17 +1,17 @@
-# jphtools
+# Woodhouse
 
-A collection of random personal tools.
+A collection of random personal tools. My very own butler, or valet, if you will. Don't feed him any sand, however.
 
 ## Usage
 
-You can use the `jphtools` command-line interface to access various tools.
+You can use the `woodhouse` command-line interface to access various tools.
 
 ### Strip solution blocks
 
 For example, to strip solution blocks from a Jupyter notebook:
 
 ```sh
-jphtools notebook strip-answers input.ipynb output.ipynb
+woodhouse notebook strip-answers input.ipynb output.ipynb
 ```
 
 This will remove code between `# BEGIN_SOLUTION` and `# END_SOLUTION` in code cells, replacing it with `# ADD YOUR CODE HERE` in the output notebook.
@@ -21,7 +21,7 @@ This will remove code between `# BEGIN_SOLUTION` and `# END_SOLUTION` in code ce
 To compress PNG files, use the `crunch` command:
 
 ```sh
-jphtools crunch "**/cat*.png"
+woodhouse crunch "**/cat*.png"
 ```
 
 This command will find all PNG files matching the pattern, run `crunch` on them, rename the originals to `*-precrunch.png`, and rename the compressed files to their original names.
