@@ -27,7 +27,7 @@ async def generate_weaviate_code_from_prompt(prompt: str) -> str:
     model = AnthropicModel('claude-3-5-sonnet-latest')
     agent = Agent(model, system_prompt=system_prompt)
 
-    result = await agent.run_async(prompt)
+    result = await agent.run(prompt)
     return result.output
 
 
@@ -45,18 +45,18 @@ def weaviate():
 async def weaviate_async():
     """Generate Weaviate code examples."""
     examples_path = importlib.resources.files("woodhouse") / "weaviate_examples"
-    example_files = sorted(list(examples_path.glob("*.py")))
+    example_files = sorted(list(examples_path.glob("*.py")) + list(examples_path.glob("*.yaml")))
 
     example_choices = [f.stem for f in example_files]
     ai_choice = "Ask AI to generate an example"
 
-    selected_example = questionary.select(
+    selected_example = await questionary.select(
         "Which Weaviate example would you like?",
         choices=example_choices + [ai_choice],
-    ).ask()
+    ).ask_async()
 
     if selected_example == ai_choice:
-        prompt = questionary.text("What would you like the AI to do?").ask()
+        prompt = await questionary.text("What would you like the AI to do?").ask_async()
         if prompt:
             generated_code = await generate_weaviate_code_from_prompt(prompt)
             print("--- Generated Code ---")
