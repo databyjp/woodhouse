@@ -5,6 +5,7 @@
 import nbformat
 import re
 import argparse
+from pathlib import Path
 
 
 def strip_solutions_from_notebook(input_path, output_path):
@@ -23,24 +24,8 @@ def strip_solutions_from_notebook(input_path, output_path):
                 cell.source,
                 flags=re.DOTALL,
             )
+            cell.outputs = []
+            cell.execution_count = None
 
     with open(output_path, "w") as f:
         nbformat.write(nb, f)
-
-
-def main():
-    parser = argparse.ArgumentParser(
-        description="Strip solution blocks from a Jupyter notebook."
-    )
-    parser.add_argument(
-        "input_path", help="Path to the input notebook (with solutions)"
-    )
-    parser.add_argument(
-        "output_path", help="Path to the output notebook (student version)"
-    )
-    args = parser.parse_args()
-    strip_solutions_from_notebook(args.input_path, args.output_path)
-
-
-if __name__ == "__main__":
-    main()
